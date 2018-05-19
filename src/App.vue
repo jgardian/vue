@@ -29,10 +29,17 @@ export default {
      toggleAuth() {
      this.isAuthenticated =!this.isAuthenticated;
 	}
- }
+ },
+ 
 }
 </script>
+<script>
+import "milligram";
 
+export default {
+  // ...
+};
+</script>
 
 
 
