@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import "milligram";
 export default {
  data() {
      return {
@@ -33,13 +34,7 @@ export default {
  
 }
 </script>
-<script>
-import "milligram";
 
-export default {
-  // ...
-};
-</script>
 
 
 
