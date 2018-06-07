@@ -1,16 +1,16 @@
 <template>
   <div id="app">
   
-    <h1> Witaj w systemie do zapisow na zajecia</h1>
-    <div v-if ="isAuthenticated">
-    <h2> Zalogowany jako {{email}}</h2>
-   <button @click="toggleAuth()">Wyloguj</button>
+    <h1> System do zapisow na zajecia</h1>
+
+    <div v-if ="authenticatedUsername">
+    <h2> Witaj {{authenticatedUsername}} !</h2>
+   <button @click="logout()">Wyloguj</button>
+   <meeting-page></meeting-page>
     </div>
  <div v-else>
   
-   <h2> Zaloguj sie emailem </h2>
-    <input type="email" v-model="email">
-    <button @click="toggleAuth()">Wchodze</button>
+    <login-form @login="login($event)"></login-form>
   </div>
 
  
@@ -19,20 +19,28 @@
 
 <script>
 import "milligram";
+import LoginForm from "./LoginForm";
+import MeetingPage from "./meetings/MeetingPage"
 export default {
+  name: "app",
+
+ components: {LoginForm, MeetingPage},
  data() {
      return {
-         email: '',
-         isAuthenticated:false
+         authenticatedUsername : '',
+         
      }
  },
  methods: {
-     toggleAuth() {
-     this.isAuthenticated =!this.isAuthenticated;
-	}
- },
+     login(username) {
+    this.authenticatedUsername = username;
+  },  
+   logout() {
+     this.authenticatedUsername = '';
+     }
+   }
  
-}
+};
 </script>
 
 
